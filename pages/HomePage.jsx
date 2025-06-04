@@ -1,13 +1,13 @@
-import React from 'react';
-import FoodTable from '../components/FoodTable';
+import FoodTable from "../components/FoodTable";
+import { Text, View } from "react-native";
 
 function HomePage(props) {
-	return (
-		<div>
-			Home Page
-			<FoodTable></FoodTable>
-		</div>
-	);
+    return (
+        <View>
+            <Text>Home Page</Text>
+            <FoodTable></FoodTable>
+        </View>
+    );
 }
 
 export default HomePage;

@@ -1,10 +1,10 @@
-import React from 'react';
+import { View, Text } from "react-native";
 
 function FoodItem({item}) {
 	return (
-		<div>
-			{item.name}
-		</div>
+		<View>
+			<Text>{item.name}</Text>
+		</View>
 	);
 }
 
