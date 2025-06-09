@@ -21,7 +21,6 @@ export const FoodProvider = ({ children }) => {
 			return [];
 		}
 		
-		console.log("hola", foods.findIndex((food) => food.id === id));
 		return (foods.find((food) => food.id === id));
 	}
 

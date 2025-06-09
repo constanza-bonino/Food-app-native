@@ -1,17 +1,15 @@
-import React from "react";
 import {
     View,
     Text,
     StyleSheet,
     Image,
     Platform,
-    useWindowDimensions,
     TouchableOpacity,
 } from "react-native";
 import { useFood } from "../contexts/FoodContext";
+import { Link } from "expo-router";
 
 function FoodItem({ item }) {
-    const { width } = useWindowDimensions();
     const { onFoodClicked } = useFood();
 
     const disabled = item.stock <= 0;
@@ -37,6 +35,9 @@ function FoodItem({ item }) {
             />
 
             <View style={styles.info}>
+                <Link href={`/ProductoPage?id=${item.id}`} >
+                    <Text style={styles.buttonText}>Ver más...</Text>
+                </Link>
                 <Text style={styles.name}>{item.name}</Text>
                 <Text style={styles.price}>${item.price}</Text>
                 <View style={styles.quantityBadge}>
