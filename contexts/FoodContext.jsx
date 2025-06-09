@@ -17,17 +17,24 @@ export const FoodProvider = ({ children }) => {
 	}
 
 	const getFoodById = (id) => {
+		if (!foods) {
+			return [];
+		}
 		
+		console.log("hola", foods.findIndex((food) => food.id === id));
 		return (foods.find((food) => food.id === id));
 	}
 
 	const orderedFoods = () => {
+		if (!foods) {
+			return [];
+		}
 		const array = foods.filter((food) => food.quantity > 0);
 		return (array);
 	}
 
 	const agregarCarrito = (id) => {
-		let nuevasComidas = foods;
+		let nuevasComidas = [...foods];
 		const indiceElem = nuevasComidas.findIndex((food) => food.id === id);
 		nuevasComidas[indiceElem].quantity++;
 		nuevasComidas[indiceElem].stock--;
@@ -35,7 +42,7 @@ export const FoodProvider = ({ children }) => {
 	}
 
 	const sacarCarrito = (id) => {
-		let nuevasComidas = foods;
+		let nuevasComidas = [...foods];
 		const indiceElem = nuevasComidas.findIndex((food) => food.id === id);
 		nuevasComidas[indiceElem].quantity--;
 		nuevasComidas[indiceElem].stock++;
