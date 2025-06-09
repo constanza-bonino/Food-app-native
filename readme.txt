@@ -4,6 +4,6 @@
     {
       "API_ENDPOINT": "https://5938-2800-a4-c11a-800-11a-35cf-2d85-1297.ngrok-free.app/foods"
     }
-4 - correr "npx expo start --tunnel"
+4 - correr "npx expo start --tunnel
 
 Nota: cada vez que corren "npx ngrok http 3000" se crea una nueva url, por lo que deben repetir el paso 3 cada vez que lo haga
