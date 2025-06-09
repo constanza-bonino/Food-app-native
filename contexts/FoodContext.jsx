@@ -3,7 +3,18 @@ import env from "../env.json";
 const FoodContext = createContext();
 
 export const FoodProvider = ({ children }) => {
-	const [foods, setFoods] = useState([]);
+	const [foods, setFoods] = useState(undefined);
+
+    const onFoodClicked = (food_id) => {
+		let clonedFoods = [...foods];
+		clonedFoods.forEach((food) => {
+			if (food.id === food_id && food.stock > 0) {
+				food.stock = food.stock - 1;
+				food.quantity = food.quantity + 1;
+			}
+		});
+		setFoods(clonedFoods);
+	}
 
 	const getFoodById = (id) => {
 		
@@ -59,7 +70,7 @@ export const FoodProvider = ({ children }) => {
 
 
   return (
-    <FoodContext.Provider value={{ foods, orderedFoods, agregarCarrito, sacarCarrito, getFoodById }}>
+    <FoodContext.Provider value={{ foods, orderedFoods, agregarCarrito, sacarCarrito, getFoodById, onFoodClicked }}>
       	{children}
     </FoodContext.Provider>
   );

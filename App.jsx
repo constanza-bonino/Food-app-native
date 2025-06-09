@@ -2,8 +2,10 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import HomePage from "./app/HomePage";
 import { FoodProvider } from "./contexts/FoodContext";
+import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 export default function App() {
+
     return (
         <FoodProvider>
             <View style={styles.container}>
@@ -17,8 +19,6 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
+		backgroundColor:"#f7f7f7"
     },
 });
