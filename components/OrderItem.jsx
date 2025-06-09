@@ -9,7 +9,7 @@ export default function OrderItem({nombre, cantidad, precio}) {
             flexDirection: "row",
 
         }}>
-            <Button> X </Button>
+            <Button title="X"> </Button>
             <Text>{nombre} x {cantidad}</Text>
             <Text>{precio*cantidad}</Text>
         </View>

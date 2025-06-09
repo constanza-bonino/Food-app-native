@@ -1,22 +1,27 @@
 import FoodItem from "./FoodItem";
 import { useFood } from "../contexts/FoodContext";
-import { ScrollView, Text, StyleSheet } from "react-native";
+import { ScrollView, Text, StyleSheet, View,ActivityIndicator} from "react-native";
 
 function FoodTable() {
-    const { foods } = useFood();
+    const { foods, fetchError } = useFood();
 
+    if (fetchError || !foods)
+        return (
+            <View style={styles.errorContainer}>
+                {!foods && <ActivityIndicator size="large"  color="#fe78438f"/>}
+                {fetchError && <Text style={styles.errorText}>Error obteniendo comidas</Text>}
+            </View>
+        );
     if (!foods) return <Text>Cargando comidas...</Text>;
+
     return (
         <ScrollView
             contentContainerStyle={styles.listContainer}
-			showsVerticalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
             style={styles.listScroll}
         >
             {foods.map((food) => (
-                <FoodItem
-                    key={food.id}
-                    item={food}
-                />
+                <FoodItem key={food.id} item={food} />
             ))}
         </ScrollView>
     );
@@ -29,8 +34,19 @@ const styles = StyleSheet.create({
     listContainer: {
         flexDirection: "row",
         flexWrap: "wrap",
-		justifyContent: "flex-start",
-		paddingBottom: 16,
+        justifyContent: "flex-start",
+        paddingBottom: 16,
+    },
+    errorContainer: {
+        flex: 1,
+        justifyContent: "center", 
+        alignItems: "center", 
+        backgroundColor: "#eee", 
+    },
+    errorText: {
+        fontSize: 20,
+        color: "#fe78438f", 
+        fontWeight: "bold",
     },
 });
 export default FoodTable;

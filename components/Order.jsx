@@ -6,7 +6,6 @@ export default function Order() {
     const { orderedFoods } = useFood();
 
     const comidaPedido = orderedFoods();
-    console.log("comida", comidaPedido);
 
     return (
         <View style={{

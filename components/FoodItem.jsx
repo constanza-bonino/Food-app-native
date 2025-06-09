@@ -7,12 +7,23 @@ import {
     TouchableOpacity,
 } from "react-native";
 import { useFood } from "../contexts/FoodContext";
-import { Link } from "expo-router";
+import { Link, router} from "expo-router";
 
 function FoodItem({ item }) {
     const { onFoodClicked } = useFood();
-
     const disabled = item.stock <= 0;
+
+    const VerMasLink = (
+        <Link href={`/ProductoPage?id=${item.id}`} disabled={disabled}>
+            <Text style={styles.linkText}>Ver más...</Text>
+        </Link>
+    );
+
+    const foodItemLongPress = () => {
+        // if(Platform.OS === "web") return;
+        router.navigate(`/ProductoPage?id=${item.id}`);
+    }
+
     return (
         <TouchableOpacity
             style={[
@@ -23,6 +34,7 @@ function FoodItem({ item }) {
             disabled={disabled}
             activeOpacity={disabled ? 1 : 0.7}
             onPress={() => onFoodClicked(item.id)}
+            onLongPress={() => foodItemLongPress()}
         >
             <Image
                 source={{ uri: item.thumbnail_url }}
@@ -35,9 +47,7 @@ function FoodItem({ item }) {
             />
 
             <View style={styles.info}>
-                <Link href={`/ProductoPage?id=${item.id}`} >
-                    <Text style={styles.buttonText}>Ver más...</Text>
-                </Link>
+                {Platform.OS === "web" && VerMasLink}
                 <Text style={styles.name}>{item.name}</Text>
                 <Text style={styles.price}>${item.price}</Text>
                 <View style={styles.quantityBadge}>
@@ -118,6 +128,10 @@ const styles = StyleSheet.create({
         width: 120,
         height: 120,
         marginRight: 12,
+    },
+    linkText: {
+        color: "#0000EE",
+        textDecorationLine: "underline",
     },
 });
 

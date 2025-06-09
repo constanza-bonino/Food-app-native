@@ -27,9 +27,9 @@ export default function ProductoPage() {
             />
             <Text>Precio: {food.price}</Text>
             <View>
-                <Button onPress={() => { sacarCarrito(id); }} disabled={food.quantity === 0}> - </Button>
+                <Button onPress={() => { sacarCarrito(id); }} disabled={food.quantity === 0} title="-"></Button>
                 <Text>{food.quantity}</Text>
-                <Button onPress={() => { onFoodClicked(id); }} disabled={food.stock === 0}> + </Button>
+                <Button onPress={() => { onFoodClicked(id); }} disabled={food.stock === 0} title='+'></Button>
             </View>
         </View>
     )

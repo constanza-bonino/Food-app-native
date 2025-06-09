@@ -4,6 +4,7 @@ const FoodContext = createContext();
 
 export const FoodProvider = ({ children }) => {
 	const [foods, setFoods] = useState(undefined);
+	const [fetchError, setFetchError] = useState(undefined);
 
     const onFoodClicked = (food_id) => {
 		let clonedFoods = [...foods];
@@ -66,6 +67,8 @@ export const FoodProvider = ({ children }) => {
                 const data = await response.json();
                 setFoods(data);
             } catch (error) {
+				setFoods([])
+				setFetchError(error);
                 console.log("error", error);
             }
         };
@@ -76,7 +79,7 @@ export const FoodProvider = ({ children }) => {
 
 
   return (
-    <FoodContext.Provider value={{ foods, orderedFoods, agregarCarrito, sacarCarrito, getFoodById, onFoodClicked }}>
+    <FoodContext.Provider value={{ foods, fetchError, orderedFoods, agregarCarrito, sacarCarrito, getFoodById, onFoodClicked }}>
       	{children}
     </FoodContext.Provider>
   );
