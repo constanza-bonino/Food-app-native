@@ -17,8 +17,9 @@ export const FoodProvider = ({ children }) => {
 	}
 
 	const getFoodById = (id) => {
-		
-		return (foods.find((food) => food.id === id));
+		console.log("Id:", id);
+		console.log("DOods: ", foods)
+		return (foods.find((food) => food.id == id));
 	}
 
 	const orderedFoods = () => {
