@@ -11,7 +11,7 @@
         {
             "id": "2",
             "name": "Empanada",
-            "thumbnail_url": "https://assets.unileversolutions.com/recipes-v2/237001.jpg",
+            "thumbnail_url": "https://cuk-it.com/wp-content/uploads/2024/05/empanadas-carne-cuchillo-thumb.webp",
             "price": 95,
             "stock": 24,
             "quantity": 1
@@ -79,12 +79,6 @@
             "price": 240,
             "stock": 1298,
             "quantity": 4
-        },
-        {
-            "id": "32ce"
-        },
-        {
-            "id": "95e1"
         }
     ]
 }
